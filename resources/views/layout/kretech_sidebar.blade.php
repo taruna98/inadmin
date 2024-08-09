@@ -1,4 +1,4 @@
-@if(auth()->check() && auth()->user()->hasAnyRole(['owner', 'admin']))
+@if(auth()->check() && auth()->user()->hasAnyRole(['super admin', 'admin']))
     <li class="nav-heading">HOME KRETECH</li>
       
     <li class="nav-item">

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Opsadmin - Home</title>
+    <title>Inadmin - Home</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -32,6 +32,9 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
+    <!-- DataTables Responsive CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
     <!-- Template Main CSS File -->
     @if (request()->segment(1) == 'kretech')
         <link href="{{ URL::asset('assets/css/style-kretech.css') }}" rel="stylesheet">
@@ -44,6 +47,9 @@
 
     <!-- DataTables JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+    <!-- DataTables Responsive JS -->
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 
     <!-- CDN CKEditor 5 -->
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/super-build/ckeditor.js"></script>

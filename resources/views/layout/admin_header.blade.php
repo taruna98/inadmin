@@ -1,11 +1,8 @@
 <?php
   // get profile image
   $role = Auth::user()->roles->pluck('name')[0];
-  if ($role == 'admin' || $role == 'owner') {
+  if ($role == 'admin' || $role == 'super admin') {
       $img_profile = 'admin_img_profile_' . strstr(Auth::user()->email, '@', true);
-  } else if ($role == 'kretech member') {
-      $profile = DB::connection('mysql2')->table('profiles')->where('eml', Auth::user()->email)->first();
-      $img_profile = 'kretech_img_profile_' . $profile->cod;
   }
 ?>
 
@@ -14,7 +11,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="/" class="logo d-flex align-items-center">
         <img src="{{ URL::asset('assets/img/logo.png') }}" alt="">
-        <span class="d-none d-lg-block">Opsadmin</span>
+        <span class="d-none d-lg-block">Inadmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -179,7 +176,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ URL::asset('assets/img/' . $img_profile . '.jpg') }}" alt="Profile" class="rounded-circle img-profile-nav">
+            <img src="{{ URL::asset('assets/img/img_profile_default.jpg') }}" alt="Profile" class="rounded-circle img-profile-nav">
             <span class="d-none d-md-block dropdown-toggle ps-2"> {{ ucwords(explode(' ', auth()->user()->name)[0]) }}</span>
           </a><!-- End Profile Iamge Icon -->
 

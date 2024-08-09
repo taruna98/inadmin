@@ -25,9 +25,9 @@ class HomeController extends BaseController
     {
         $title = 'Home';
 
-        // get user kretech
-        $role = 'kretech member';
-        $user_kretech = User::whereHas('roles', function ($query) use ($role) {
+        // get user in admin
+        $role = 'super admin';
+        $user_in = User::whereHas('roles', function ($query) use ($role) {
             $query->where('name', $role);
         })->get();
 
@@ -36,7 +36,7 @@ class HomeController extends BaseController
 
         return view('admin_home', [
             'title'         => $title,
-            'user_kretech'  => $user_kretech,
+            'user_in'       => $user_in,
             'all_activity'  => $all_activity
         ]);
 

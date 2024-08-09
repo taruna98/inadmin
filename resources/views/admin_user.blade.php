@@ -418,7 +418,7 @@
                         }
                     },
                     initComplete: function(settings, json) {
-                        // console.log(json);
+                        console.log(json);
                         buildRoleDropdown();
                     },
                     columns: [{
