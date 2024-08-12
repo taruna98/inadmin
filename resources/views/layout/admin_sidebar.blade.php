@@ -1,41 +1,48 @@
 <aside id="sidebar" class="sidebar">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
-    
-    <!-- Sidebar Home Here -->
-    @if(auth()->check() && auth()->user()->hasAnyRole(['super admin', 'admin', 'member']))
-      @if(request()->segment(1) == '' || request()->segment(1) == 'user' || request()->segment(1) == 'activity-log')
-        @include('layout.home_sidebar')
-      @endif
-    @endif
-    
-    <!-- Sidebar Kretech ID Here -->
-    @if(auth()->check() && auth()->user()->hasAnyRole(['super admin', 'admin', 'member']))
-      @if(request()->segment(1) == 'kretech')
-        @include('layout.kretech_sidebar')
-      @endif
-    @endif
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-    @if(auth()->check() && auth()->user()->hasAnyRole(['super admin', 'admin']))
-      @if(request()->segment(1) == '' || request()->segment(1) == 'user' || request()->segment(1) == 'activity-log')
-      <li class="nav-heading">ADMINISTRATOR</li>
-      
-      <li class="nav-item">
-        <a class="nav-link {{ (request()->segment(1) == 'user') ? '' : 'collapsed' }}" href="{{ route('user') }}">
-          <i class="bi bi-people"></i>
-          <span>User</span>
-        </a>
-      </li><!-- End Users Nav -->
-      
-      <li class="nav-item">
-        <a class="nav-link {{ (request()->segment(1) == 'activity-log') ? '' : 'collapsed' }}" href="{{ route('activity_log') }}">
-          <i class="bi bi-person-lines-fill"></i>
-          <span>Activity Log</span>
-        </a>
-      </li><!-- End Activity Log Nav -->
-      @endif
-    @endif
+        <!-- Sidebar Home Here -->
+        @if (auth()->check() &&
+                auth()->user()->hasAnyRole(['super admin', 'admin', 'iabsent member']))
+            @if (request()->segment(1) == '' || request()->segment(1) == 'user' || request()->segment(1) == 'activity-log')
+                @include('layout.home_sidebar')
+            @endif
+        @endif
 
-  </ul>
+        <!-- Sidebar Kretech ID Here -->
+        @if (auth()->check() &&
+                auth()->user()->hasAnyRole(['super admin', 'admin', 'iabsent member']))
+            @if (request()->segment(1) == 'kretech')
+                @include('layout.kretech_sidebar')
+            @elseif (request()->segment(1) == 'iabsent')
+                @include('layout.iabsent_sidebar')
+            @endif
+        @endif
+
+        @if (auth()->check() &&
+                auth()->user()->hasAnyRole(['super admin', 'admin']))
+            @if (request()->segment(1) == '' || request()->segment(1) == 'user' || request()->segment(1) == 'activity-log')
+                <li class="nav-heading">ADMINISTRATOR</li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->segment(1) == 'user' ? '' : 'collapsed' }}"
+                        href="{{ route('user') }}">
+                        <i class="bi bi-people"></i>
+                        <span>User</span>
+                    </a>
+                </li><!-- End Users Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->segment(1) == 'activity-log' ? '' : 'collapsed' }}"
+                        href="{{ route('activity_log') }}">
+                        <i class="bi bi-person-lines-fill"></i>
+                        <span>Activity Log</span>
+                    </a>
+                </li><!-- End Activity Log Nav -->
+            @endif
+        @endif
+
+    </ul>
 
 </aside>

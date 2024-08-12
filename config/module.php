@@ -1,9 +1,8 @@
 <?php
 
 return [
-    'modules'=>[
+    'modules' => [
         'Kretech',
+        'Iabsent',
     ]
 ];
-
-?>
